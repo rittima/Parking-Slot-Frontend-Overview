@@ -24,7 +24,7 @@ const Sidebar = () => {
             <LayoutDashboard size={18} /> Dashboard
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/entry" className={linkClasses}>
             <LogIn size={18} /> Entry Gate
           </NavLink>
@@ -33,7 +33,7 @@ const Sidebar = () => {
           <NavLink to="/exit" className={linkClasses}>
             <LogOut size={18} />  Exit Gate
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/available-slot" className={linkClasses}>
             <CheckCircle size={18} />  Slots Management

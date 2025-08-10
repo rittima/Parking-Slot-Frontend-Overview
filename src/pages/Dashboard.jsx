@@ -1,34 +1,46 @@
+import { LogIn, LogOut } from "lucide-react";
+import { NavLink } from "react-router-dom";
+
 const Dashboard = () => {
   return (
-    <div className="flex flex-col flex-1  p-6 min-h-screen">
+    <div className="flex flex-col flex-1 p-6 min-h-screen bg-yellow-50">
       {/* Header */}
-      <header className="mb-6 flex justify-between items-center">
+      <header className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
         <h1 className="text-2xl font-bold text-yellow-700">
           Dashboard Overview
         </h1>
-        <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 shadow-md transition">
-          + Add New
-        </button>
+        <div className="flex gap-3">
+          <NavLink
+            to="/entry"
+            className="flex items-center gap-2 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 shadow-md transition"
+          >
+            <LogIn size={18} /> Entry Gate
+          </NavLink>
+          <NavLink
+            to="/exit"
+            className="flex items-center gap-2 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 shadow-md transition"
+          >
+            <LogOut size={18} /> Exit Gate
+          </NavLink>
+        </div>
       </header>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500">
-          <h3 className="text-sm text-gray-600">Total Users</h3>
-          <p className="text-2xl font-bold text-yellow-700">1,245</p>
-        </div>
-        <div className="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500">
-          <h3 className="text-sm text-gray-600">Slot Available</h3>
-          <p className="text-2xl font-bold text-yellow-700">13</p>
-        </div>
-        <div className="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500">
-          <h3 className="text-sm text-gray-600">Slot Occupied</h3>
-          <p className="text-2xl font-bold text-yellow-700">27</p>
-        </div>
-        <div className="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500">
-          <h3 className="text-sm text-gray-600">Revenue</h3>
-          <p className="text-2xl font-bold text-yellow-700">$56,890</p>
-        </div>
+        {[
+          { title: "Total Users", value: "1,245" },
+          { title: "Slot Available", value: "13" },
+          { title: "Slot Occupied", value: "27" },
+          { title: "Revenue", value: "₹56,890" },
+        ].map((stat, i) => (
+          <div
+            key={i}
+            className="bg-white p-5 rounded-lg shadow-md border-l-4 border-yellow-500 hover:shadow-lg transition"
+          >
+            <h3 className="text-sm text-gray-600">{stat.title}</h3>
+            <p className="text-2xl font-bold text-yellow-700">{stat.value}</p>
+          </div>
+        ))}
       </div>
 
       {/* Main Content */}
@@ -60,10 +72,10 @@ const Dashboard = () => {
             Quick Actions
           </h2>
           <div className="space-y-3">
-            <button className="w-full bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 shadow-md">
+            <button className="w-full bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 shadow-md transition">
               Manage Users
             </button>
-            <button className="w-full bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 shadow-md">
+            <button className="w-full bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 shadow-md transition">
               Generate Report
             </button>
           </div>
